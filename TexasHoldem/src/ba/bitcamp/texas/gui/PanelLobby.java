@@ -31,6 +31,14 @@ public class PanelLobby extends JPanel {
 	public PanelLobby() {
 		setLayout(new GridLayout(1, 2));
 		
+		pnlWest.setLayout(new GridLayout(3, 2));
+		pnlWest.add(lblRoomName);
+		pnlWest.add(txtRoomName);
+		pnlWest.add(lblNumberOfPlayers);
+		pnlWest.add(txtNumberOfPlayers);
+		pnlWest.add(btnCreateRoom);
+
+		
 		pnlEast.setLayout(new BorderLayout());
 		pnlEast.add(lstRooms);
 		pnlEast.add(btnJoinRoom, BorderLayout.SOUTH);
