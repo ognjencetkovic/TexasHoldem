@@ -25,8 +25,8 @@ public class PanelPlayer extends JLayeredPane {
 	JLabel lblCard2 = new JLabel("Card 2");
 	JLabel lblPlayerInfo = new JLabel("Player Info");
 	
-	PanelCardImage card1 = new PanelCardImage();
-	PanelCardImage card2 = new PanelCardImage();
+	PanelCardImage card1 = new PanelCardImage(null);
+	PanelCardImage card2 = new PanelCardImage(null);
 	
 	public PanelPlayer() {
 		
