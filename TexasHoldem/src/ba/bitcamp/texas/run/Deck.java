@@ -2,6 +2,7 @@ package ba.bitcamp.texas.run;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.TreeSet;
 
 import ba.bitcamp.texas.run.Card.Suit;
 import ba.bitcamp.texas.run.Card.Value;
@@ -27,5 +28,7 @@ public class Deck {
 		System.out.println(d.deck);
 		d.shuffle();
 		System.out.println(d.deck);
+		TreeSet<Card> t = new TreeSet<Card>(d.deck);
+		System.out.println(t);
 	}
 }

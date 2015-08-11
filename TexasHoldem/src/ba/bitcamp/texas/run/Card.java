@@ -1,6 +1,6 @@
 package ba.bitcamp.texas.run;
 
-public class Card {
+public class Card implements Comparable<Card> {
 
 	public enum Suit {
 		HEARTS, CLUBS, DIAMONDS, SPADES
@@ -23,8 +23,35 @@ public class Card {
 		this.value = value;
 	}
 	
+	/**
+	 * @return the suit
+	 */
+	public Suit getSuit() {
+		return suit;
+	}
+
+	/**
+	 * @return the value
+	 */
+	public Value getValue() {
+		return value;
+	}
+
 	@Override
 	public String toString() {
 		return value.toString() + " of " + suit.toString();
+	}
+
+	@Override
+	public int compareTo(Card o) {
+		if(this.value.ordinal() < o.value.ordinal())
+			return -1;
+		else if(this.value.ordinal() > o.value.ordinal())
+			return 1;
+		if(this.suit.ordinal() < o.suit.ordinal())
+			return -1;
+		else if(this.suit.ordinal() > o.suit.ordinal())
+			return 1;
+		return 0;
 	}
 }
