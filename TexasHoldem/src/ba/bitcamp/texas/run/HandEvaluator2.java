@@ -8,13 +8,16 @@ import ba.bitcamp.texas.run.Card.Value;
 public class HandEvaluator2 implements Comparable<HandEvaluator2> {
 
 	private static final int MAX_NUM_OF_PAIRS = 2;
+	
 	private ArrayList<Card> hand;
+	
 	private int[] distibutionOfValues = new int[Value.values().length];
 	private int[] distibutionOfSuits = new int[Suit.values().length];
+	
 	private int fourOfAKind;
 	private int threeOfAKind;
 	private int numOfPairs;
-	private int[] pairs;
+	private int[] pairs = new int[MAX_NUM_OF_PAIRS];
 
 	public HandEvaluator2(ArrayList<Card> hand) {
 		this.hand = hand;

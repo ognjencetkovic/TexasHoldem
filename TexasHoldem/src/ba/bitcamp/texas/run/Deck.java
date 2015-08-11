@@ -25,9 +25,9 @@ public class Deck {
 	
 	public static void main(String[] args) {
 		Deck d = new Deck();
-		//System.out.println(d.deck);
+		System.out.println(d.deck);
 		d.shuffle();
-		//System.out.println(d.deck);
+		System.out.println(d.deck);
 		
 		for (int i = 0; i < 5; i++) {
 			System.out.print(d.deck.remove(i) + ", ");
@@ -40,7 +40,7 @@ public class Deck {
 			}			
 			System.out.println();
 		}
-		
+		System.out.println(d.deck);
 		
 	}
 }

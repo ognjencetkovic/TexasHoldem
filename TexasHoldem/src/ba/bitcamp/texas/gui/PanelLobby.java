@@ -2,6 +2,7 @@ package ba.bitcamp.texas.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -22,9 +23,9 @@ public class PanelLobby extends JPanel {
 	private JButton btnJoinRoom = new JButton("Join room");
 	private JPanel pnlEast = new JPanel();
 
-	private JLabel lblRoomName = new JLabel("Room name: ");
+	private JLabel lblRoomName = new JLabel("Room name:", JLabel.CENTER);
 	private JTextField txtRoomName = new JTextField();
-	private JLabel lblNumberOfPlayers = new JLabel("Number of players: ");
+	private JLabel lblNumberOfPlayers = new JLabel("Number of players:", JLabel.CENTER);
 	// private JTextField txtNumberOfPlayers = new JTextField();
 	private JButton btnCreateRoom = new JButton("Create room");
 	private JPanel pnlWest = new JPanel();
@@ -50,6 +51,12 @@ public class PanelLobby extends JPanel {
 		//pa ako ti se ne svidja slobodno izbrisi pa otkomentarisi ovo gore :D
 		
 		Box theBox = Box.createVerticalBox();
+		
+		lblRoomName.setPreferredSize(new Dimension(300,50));
+		lblNumberOfPlayers.setPreferredSize(new Dimension(300,50));
+		
+		lblRoomName.setBorder(BorderFactory.createTitledBorder("dsadasd"));
+		lblNumberOfPlayers.setBorder(BorderFactory.createTitledBorder("dsadasd"));
 		
 		theBox.add(lblRoomName);
 		theBox.add(Box.createVerticalStrut(20));
