@@ -25,10 +25,22 @@ public class Deck {
 	
 	public static void main(String[] args) {
 		Deck d = new Deck();
-		System.out.println(d.deck);
+		//System.out.println(d.deck);
 		d.shuffle();
-		System.out.println(d.deck);
-		TreeSet<Card> t = new TreeSet<Card>(d.deck);
-		System.out.println(t);
+		//System.out.println(d.deck);
+		
+		for (int i = 0; i < 5; i++) {
+			System.out.print(d.deck.remove(i) + ", ");
+		}	
+		System.out.println();
+		for (int j = 0; j < 4; j++) {
+			System.out.print("player " + (j + 1) + ": ");
+			for (int i = 0; i < 2; i++) {
+				System.out.print(d.deck.remove(i) + ", ");
+			}			
+			System.out.println();
+		}
+		
+		
 	}
 }

@@ -32,10 +32,6 @@ public class MainWindow extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		System.out.println(getContentPane().getHeight());
-		System.out.println(getContentPane().getWidth());
-		
-		
 	}
 	
 	public static MainWindow getInstance(){

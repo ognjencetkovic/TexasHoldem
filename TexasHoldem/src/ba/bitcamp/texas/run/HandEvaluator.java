@@ -115,7 +115,7 @@ public class HandEvaluator {
     
     private void findDuplicates() {
         // Find quads, triples and pairs.
-        for (int i = Card.NO_OF_RANKS - 1; i >= 0 ; i--) {
+        for (int i = Value.values().length - 1; i >= 0 ; i--) {
             if (rankDist[i] == 4) {
                 quadRank = i;
             } else if (rankDist[i] == 3) {
@@ -288,8 +288,8 @@ public class HandEvaluator {
             int inStraight = 1;
             int inFlush = 1;
             for (Card card : cards) {
-                int rank = card.getRank();
-                int suit = card.getSuit();
+                int rank = card.getValue().ordinal();
+                int suit = card.getSuit().ordinal();
                 if (lastRank != -1) {
                     int rankDiff = lastRank - rank;
                     if (rankDiff == 1) {
@@ -321,7 +321,7 @@ public class HandEvaluator {
             }
             
             if (inStraight >= 5 && inFlush >= 5) {
-                if (straightRank == Card.ACE) {
+                if (straightRank == Card.Value.ACE.ordinal()) {
                     // Royal Flush.
                     type = HandValueType.ROYAL_FLUSH;
                     rankings[0] = type.getValue();
