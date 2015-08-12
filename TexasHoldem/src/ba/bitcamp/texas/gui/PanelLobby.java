@@ -28,7 +28,6 @@ public class PanelLobby extends JPanel {
 	private JLabel lblRoomName = new JLabel("Room name:", JLabel.CENTER);
 	private JTextField txtRoomName = new JTextField();
 	private JLabel lblNumberOfPlayers = new JLabel("Number of players:", JLabel.CENTER);
-	// private JTextField txtNumberOfPlayers = new JTextField();
 	private JButton btnCreateRoom = new JButton("Create room");
 	private JPanel pnlWest = new JPanel();
 
@@ -41,26 +40,14 @@ public class PanelLobby extends JPanel {
 		setLayout(new GridLayout(1, 2));
 
 		btnCreateRoom.addActionListener(new Action());
-		
-		// pnlWest.setLayout(new GridLayout(5,1) );
-		// pnlWest.add(lblRoomName);
-		// pnlWest.add(txtRoomName);
-		// pnlWest.add(lblNumberOfPlayers);
-		// pnlWest.add(boxPlayers);
-		// pnlWest.add(txtNumberOfPlayers);
-		// pnlWest.add(btnCreateRoom);
-		
-		
-		// Pokusao sam sa ovim Box layout i stavio sam da se broj igraca bira preko opadajuceg menija
-		//pa ako ti se ne svidja slobodno izbrisi pa otkomentarisi ovo gore :D
+
 		
 		Box theBox = Box.createVerticalBox();
 		
 		lblRoomName.setPreferredSize(new Dimension(300,50));
 		lblNumberOfPlayers.setPreferredSize(new Dimension(300,50));
 		
-		lblRoomName.setBorder(BorderFactory.createTitledBorder("dsadasd"));
-		lblNumberOfPlayers.setBorder(BorderFactory.createTitledBorder("dsadasd"));
+
 		
 		theBox.add(lblRoomName);
 		theBox.add(Box.createVerticalStrut(20));

@@ -5,7 +5,6 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -23,7 +22,8 @@ public class PanelCardImage extends JPanel {
 		this.card = card;
 		try {
 			String filePath = card.getValue().toString().toLowerCase() + "_of_" + card.getSuit().toString().toLowerCase() + ".png";
-			cardImage = ImageIO.read(new File(filePath));
+			cardImage = ImageIO.read(new File("resources",filePath ));
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -32,7 +32,7 @@ public class PanelCardImage extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(cardImage.getScaledInstance(150, 220, Image.SCALE_DEFAULT), 0, 0, null);
+		g.drawImage(cardImage.getScaledInstance(70, 100, Image.SCALE_SMOOTH), 0, 0, null);
 	}
 	
 }
