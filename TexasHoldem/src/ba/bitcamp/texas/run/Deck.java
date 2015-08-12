@@ -1,9 +1,7 @@
 package ba.bitcamp.texas.run;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.TreeSet;
 
 import ba.bitcamp.texas.run.Card.Suit;
 import ba.bitcamp.texas.run.Card.Value;

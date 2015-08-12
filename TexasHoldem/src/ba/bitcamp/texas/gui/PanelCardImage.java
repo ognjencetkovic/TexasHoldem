@@ -15,15 +15,19 @@ public class PanelCardImage extends JPanel {
 	
 	private static final long serialVersionUID = 4063138341155485971L;
 	
-	BufferedImage cardImage;
-	Card card;
-	
+	private Card card;
+	private BufferedImage cardImage;
+	private boolean turned;
 	
 	public PanelCardImage(Card card) {
 		this.card = card;
 		try {
-			String filePath = card.getValue().toString().toLowerCase() + "_of_" + card.getSuit().toString().toLowerCase() + ".png";
-			cardImage = ImageIO.read(new File(filePath));
+			if (turned) {
+				String filePath = "resources/" + card.getValue().toString().toLowerCase() + "_of_" + card.getSuit().toString().toLowerCase() + ".png";
+				cardImage = ImageIO.read(new File(filePath));				
+			} else {
+				cardImage = ImageIO.read(new File("resources/background.png"));
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

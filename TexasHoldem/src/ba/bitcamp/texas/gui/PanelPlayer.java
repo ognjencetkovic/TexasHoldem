@@ -17,6 +17,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
+import ba.bitcamp.texas.run.Card;
+import ba.bitcamp.texas.run.Card.Suit;
+import ba.bitcamp.texas.run.Card.Value;
+
 public class PanelPlayer extends JLayeredPane {
 	
 	private static final long serialVersionUID = -4366640253233963633L;
@@ -25,12 +29,13 @@ public class PanelPlayer extends JLayeredPane {
 	JLabel lblCard2 = new JLabel("Card 2");
 	JLabel lblPlayerInfo = new JLabel("Player Info");
 	
-	PanelCardImage card1 = new PanelCardImage(null);
-	PanelCardImage card2 = new PanelCardImage(null);
+	private PanelCardImage card1;
+	private PanelCardImage card2;
 	
 	public PanelPlayer() {
 		
-		
+		card1 = new PanelCardImage(new Card(Suit.HEARTS, Value.ACE));
+		card2 = new PanelCardImage(new Card(Suit.HEARTS, Value.ACE));
 		
 		setPreferredSize(new Dimension(400, 400));
 		setBorder(BorderFactory.createTitledBorder("pane"));
@@ -38,7 +43,6 @@ public class PanelPlayer extends JLayeredPane {
 		lblPlayerInfo.setBounds(10, 80, 160, 70);
 		card1.setBounds(30, 30, 150, 220);
 		card2.setBounds(150, 30, 150, 220);
-		ImageIcon c1 = new ImageIcon("card1.png");
 		
 		lblCard1.setBorder(BorderFactory.createTitledBorder("card1"));
 		lblCard2.setBorder(BorderFactory.createTitledBorder("card2"));
