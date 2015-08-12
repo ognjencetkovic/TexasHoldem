@@ -11,14 +11,19 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.Timer;
+
+import ba.bitcamp.texas.run.Player;
 
 public class PanelLogin extends JPanel {
-
+	
+	private static final long serialVersionUID = -216914765106678273L;
+	
 	private JLabel lblUsername = new JLabel("Username: ");
 	private JTextField txtUsername = new JTextField();
 	private JButton btnSubmit = new JButton("Submit");
 	private JButton btnGit = new JButton("Git");
+	
+	private static Player player;
 	
 	public PanelLogin(Dimension d) {
 		
@@ -33,6 +38,10 @@ public class PanelLogin extends JPanel {
 		add(btnGit);
 		
 		setSize(d);
+	}
+	
+	public static Player getPlayer() {
+		return player;
 	}
 	
 	private class Action extends KeyAdapter implements ActionListener {
@@ -51,23 +60,12 @@ public class PanelLogin extends JPanel {
 		}
 		
 		private void action(){
-			//TODO
+			
+			player = new Player(txtUsername.getText());
+			
 			MainWindow.getInstance().getContentPane().removeAll();
 			MainWindow.getInstance().getContentPane().add(new PanelLobby());
 			MainWindow.getInstance().setVisible(true);
-	
-			
-//			new Timer(1, new ActionListener() {
-//				
-//				@Override
-//				public void actionPerformed(ActionEvent e) {
-//					System.out.println("dsad");
-//					MainWindow.getInstance().getContentPane().repaint();
-//					MainWindow.getInstance().repaint();
-//					pl.repaint();
-//					
-//				}
-//			}).start();
 			
 		}
 		

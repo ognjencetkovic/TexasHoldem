@@ -1,19 +1,16 @@
 package ba.bitcamp.texas.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+
+import ba.bitcamp.texas.run.Player;
 
 public class MainWindow extends JFrame {
 	
+	private static final long serialVersionUID = 5793891620592776938L;
+
 	private Dimension dim = new Dimension(getContentPane().getWidth(), getContentPane().getHeight());
 	
 	private PanelLogin pnlLogin;

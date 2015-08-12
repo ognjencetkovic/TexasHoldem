@@ -8,6 +8,8 @@ public class Player {
 	private int positionAtTable;
 	private ArrayList<Card> hand;
 	private int chips;
+	private boolean active;
+	private boolean folded;
 	
 	public Player(String name) {
 		super();
