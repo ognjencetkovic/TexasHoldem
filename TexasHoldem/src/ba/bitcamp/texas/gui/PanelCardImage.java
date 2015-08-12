@@ -23,7 +23,7 @@ public class PanelCardImage extends JPanel {
 		this.card = card;
 		try {
 			String filePath = card.getValue().toString().toLowerCase() + "_of_" + card.getSuit().toString().toLowerCase() + ".png";
-			cardImage = ImageIO.read(new File("card1.png"));
+			cardImage = ImageIO.read(new File(filePath));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
