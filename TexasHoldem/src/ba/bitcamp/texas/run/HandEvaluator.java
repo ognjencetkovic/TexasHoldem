@@ -7,7 +7,7 @@ import java.util.TreeMap;
 import ba.bitcamp.texas.run.Card.Suit;
 import ba.bitcamp.texas.run.Card.Value;
 
-public class HandEvaluator2 implements Comparable<HandEvaluator2> {
+public class HandEvaluator implements Comparable<HandEvaluator> {
 
 	private static final int MAX_NUM_OF_PAIRS = 2;
 	
@@ -26,7 +26,7 @@ public class HandEvaluator2 implements Comparable<HandEvaluator2> {
 	private int straightFlushRank;
 	private Suit flushSuit;
 
-	public HandEvaluator2(ArrayList<Card> hand) {
+	public HandEvaluator(ArrayList<Card> hand) {
 		this.hand = hand;
 		calculateDistributions();
 		findDuplicates();
@@ -119,7 +119,7 @@ public class HandEvaluator2 implements Comparable<HandEvaluator2> {
 	}
 
 	@Override
-	public int compareTo(HandEvaluator2 o) {
+	public int compareTo(HandEvaluator o) {
 		//straight flush
 		if (this.compareStraightFlush(o) != null) {
 			return this.compareStraightFlush(o);
@@ -157,7 +157,7 @@ public class HandEvaluator2 implements Comparable<HandEvaluator2> {
 		return 0;
 	}
 
-	private Integer comparePairs(HandEvaluator2 o) {
+	private Integer comparePairs(HandEvaluator o) {
 		if (this.numOfPairs == 1) {
 			if (o.numOfPairs == 1) {
 				//TODO veca karta
@@ -167,7 +167,7 @@ public class HandEvaluator2 implements Comparable<HandEvaluator2> {
 		return null;
 	}
 
-	private Integer compareTwoPairs(HandEvaluator2 o) {
+	private Integer compareTwoPairs(HandEvaluator o) {
 		if (this.numOfPairs == 2) {
 			if(o.numOfPairs == 2) {
 				//TODO
@@ -180,7 +180,7 @@ public class HandEvaluator2 implements Comparable<HandEvaluator2> {
 		return null;
 	}
 
-	private Integer compareThreeOfAKind(HandEvaluator2 o) {
+	private Integer compareThreeOfAKind(HandEvaluator o) {
 		if (this.threeOfAKind != 0) {
 			if (o.threeOfAKind != 0) {
 				return o.threeOfAKind - this.threeOfAKind;
@@ -193,7 +193,7 @@ public class HandEvaluator2 implements Comparable<HandEvaluator2> {
 		return null;
 	}
 
-	private Integer compareStraight(HandEvaluator2 o) {
+	private Integer compareStraight(HandEvaluator o) {
 		if (this.hasStraight()) {
 			//TODO
 			System.out.println("straight");
@@ -201,7 +201,7 @@ public class HandEvaluator2 implements Comparable<HandEvaluator2> {
 		return null;
 	}
 
-	private Integer compareFlush(HandEvaluator2 o) {
+	private Integer compareFlush(HandEvaluator o) {
 		if (this.hasFlush()) {
 			if(o.hasFlush()){
 				Collections.sort(this.hand);
@@ -224,7 +224,7 @@ public class HandEvaluator2 implements Comparable<HandEvaluator2> {
 		return null;
 	}
 
-	private Integer compareFullHouse(HandEvaluator2 o) {
+	private Integer compareFullHouse(HandEvaluator o) {
 		if (this.threeOfAKind != 0 && this.numOfPairs != 0) {
 			if (this.threeOfAKind != 0 && this.numOfPairs != 0) {
 				if (this.threeOfAKind == o.threeOfAKind) {
@@ -240,7 +240,7 @@ public class HandEvaluator2 implements Comparable<HandEvaluator2> {
 		return null;
 	}
 
-	private Integer compareFourOfAKind(HandEvaluator2 o) {
+	private Integer compareFourOfAKind(HandEvaluator o) {
 		if (this.fourOfAKind != 0) {
 			if (o.fourOfAKind != 0) {
 				if (o.fourOfAKind == this.fourOfAKind){
@@ -258,7 +258,7 @@ public class HandEvaluator2 implements Comparable<HandEvaluator2> {
 		return null;
 	}
 
-	private Integer compareStraightFlush(HandEvaluator2 o) {
+	private Integer compareStraightFlush(HandEvaluator o) {
 		if (this.hasStraightFlush()) {
 			if (o.hasStraightFlush()) {
 				if(this.straightFlushRank == Value.ACE.ordinal()) {

@@ -57,22 +57,16 @@ public class Deck {
 		}
 		System.out.println("p4: " + p4 + "\n");
 		
-		HandEvaluator2 h1 = new HandEvaluator2(p1);
-		HandEvaluator2 h2 = new HandEvaluator2(p2);
-		HandEvaluator2 h3 = new HandEvaluator2(p3);
-		HandEvaluator2 h4 = new HandEvaluator2(p4);
+		ArrayList<HandEvaluator> set = new ArrayList<HandEvaluator>();
+		set.add(new HandEvaluator(p1));
+		set.add(new HandEvaluator(p2));
+		set.add(new HandEvaluator(p3));
+		set.add(new HandEvaluator(p4));
 		
-		HandEvaluator2[] h = new HandEvaluator2[4];
-		h[0] = h1;
-		h[1] = h2;
-		h[2] = h3;
-		h[3] = h4;
-		Arrays.sort(h);
-		for (HandEvaluator2 handEvaluator2 : h) {
-			System.out.println(handEvaluator2.hand);
+		Collections.sort(set);
+		for (HandEvaluator h : set) {
+			System.out.println(h.hand);
 		}
-		
-		
 		
 //		for (int i = 0; i < 5; i++) {
 //			System.out.print(d.deck.remove(i) + ", ");

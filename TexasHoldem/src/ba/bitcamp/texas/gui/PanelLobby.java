@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -38,6 +40,8 @@ public class PanelLobby extends JPanel {
 
 		setLayout(new GridLayout(1, 2));
 
+		btnCreateRoom.addActionListener(new Action());
+		
 		// pnlWest.setLayout(new GridLayout(5,1) );
 		// pnlWest.add(lblRoomName);
 		// pnlWest.add(txtRoomName);
@@ -80,4 +84,18 @@ public class PanelLobby extends JPanel {
 		add(pnlEast);
 	}
 
+
+
+	private class Action implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			MainWindow.getInstance().getContentPane().removeAll();
+			MainWindow.getInstance().getContentPane().add(new PanelRoom());
+			MainWindow.getInstance().setVisible(true);
+			
+		}
+		
+	}
+	
 }
