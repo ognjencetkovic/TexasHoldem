@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
+import ba.bitcamp.texas.networking.Client;
+
 public class PanelTable extends JLayeredPane {
 	
 	private static final long serialVersionUID = 1604522399060949298L;
@@ -49,18 +51,19 @@ public class PanelTable extends JLayeredPane {
 		
 		@Override
 		public void mousePressed(MouseEvent e) {
-			System.out.println("dasd");
 			for (int i = 0; i < players.length; i++) {
 				players[i].getPlayerInfo().removeMouseListener(this);
 			}
-			updateTable(Integer.parseInt(e.getComponent().getName()));
+			PanelLogin.getPlayer().setPositionAtTable(Integer.parseInt(e.getComponent().getName()));
+			new Thread(new Client.Update()).start();
+			updateTable();
 		}
 		
 	}
 	
-	private void updateTable(int position) {
+	private void updateTable() {
 		System.out.println(PanelLogin.getPlayer().getName());
-		addPanelPlayer(new PanelPlayer(PanelLogin.getPlayer()), position);
+		addPanelPlayer(new PanelPlayer(PanelLogin.getPlayer()), PanelLogin.getPlayer().getPositionAtTable());
 		repaint();
 	}
 	

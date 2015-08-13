@@ -16,6 +16,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ba.bitcamp.texas.networking.Client;
+import ba.bitcamp.texas.networking.RoomServer;
 import ba.bitcamp.texas.run.Room;
 
 public class PanelLobby extends JPanel {
@@ -77,6 +79,9 @@ public class PanelLobby extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			new RoomServer(txtRoomName.getText());
+			PanelLogin.getPlayer().setHost("localhost");
+			new Client();
 			MainWindow.getInstance().getContentPane().removeAll();
 			MainWindow.getInstance().getContentPane().add(new PanelRoom());
 			MainWindow.getInstance().setVisible(true);

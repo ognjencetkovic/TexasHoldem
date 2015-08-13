@@ -1,36 +1,83 @@
 package ba.bitcamp.texas.networking;
 
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
+
+import org.codehaus.jackson.JsonParser.Feature;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import ba.bitcamp.texas.run.Player;
-import ba.bitcamp.texas.run.Room;
 
 public class PlayersActiveList {
 	
-	private ArrayList<Player> players;
-	private Socket socket;
+	private static Player[] players = new Player[6];
+	private static Socket[] clients = new Socket[6];
+	private static int activePlayers;
+	private static ObjectMapper mapper = new ObjectMapper();
+	private static ObjectOutputStream oos;
 	
-	public PlayersActiveList(Room room) {
-		players = new ArrayList<Player>();
-		try {
-			socket = new Socket(room.getIp(), room.getHost());
-		} catch (IOException e) {
-			e.printStackTrace();
+	public static void addPlayer(Player player, Socket client) {
+		activePlayers++;		
+		clients[player.getPositionAtTable()] = client;
+		players[player.getPositionAtTable()] = player;
+	}
+
+	public static void removePlayer(Player player){
+		activePlayers--;		
+		clients[player.getPositionAtTable()] = null;
+		players[player.getPositionAtTable()] = null;
+	}
+
+	/**
+	 * @return the activePlayers
+	 */
+	public static int getActivePlayers() {
+		return activePlayers;
+	}
+	
+	private static class ClientInformer implements Runnable {
+		
+		@Override
+		public void run() {
+			while (true) {
+				for (int i = 0; i < clients.length; i++) {
+					if(clients[i] != null){
+						try {
+							oos = new ObjectOutputStream(clients[i].getOutputStream());
+							oos.writeObject(new Integer(0));
+							oos.flush();
+							System.out.println("poslao podatke");
+							try {
+								Thread.sleep(2000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						} catch (IOException e) {
+							e.printStackTrace();
+							try {
+								Thread.sleep(20000);
+							} catch (InterruptedException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}						
+					}
+				}
+				
+			}
+			
 		}
 	}
 	
-	public void addPlayer(Player player){
-		players.add(player);
-	}
-
-	public void removePlayer(Player player){
-		players.remove(player);
+	public static void startGame() {
+		mapper.configure(Feature.AUTO_CLOSE_SOURCE, false);
+		new Thread(new ClientInformer()).start();
 	}
 	
-	public boolean isActive(Player player) {
-		return players.contains(player);
-	}
+//	public static boolean isActive(Player player) {
+//		return players.contains(player);
+//	}
 	
 }
