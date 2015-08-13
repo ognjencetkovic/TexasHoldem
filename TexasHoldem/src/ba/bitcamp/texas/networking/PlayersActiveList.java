@@ -1,7 +1,6 @@
 package ba.bitcamp.texas.networking;
 
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import org.codehaus.jackson.JsonParser.Feature;
@@ -15,7 +14,6 @@ public class PlayersActiveList {
 	private static Socket[] clients = new Socket[6];
 	private static int activePlayers;
 	private static ObjectMapper mapper = new ObjectMapper();
-	private static ObjectOutputStream oos;
 	
 	public static void addPlayer(Player player, Socket client) {
 		activePlayers++;		
@@ -44,9 +42,7 @@ public class PlayersActiveList {
 				for (int i = 0; i < clients.length; i++) {
 					if(clients[i] != null){
 						try {
-							oos = new ObjectOutputStream(clients[i].getOutputStream());
-							oos.writeObject(new Integer(0));
-							oos.flush();
+							mapper.writeValue(clients[i].getOutputStream(), players);
 							System.out.println("poslao podatke");
 							try {
 								Thread.sleep(2000);
